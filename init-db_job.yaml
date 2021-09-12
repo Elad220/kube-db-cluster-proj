@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-db-job
+spec:
+  parallelism: 
+  template:
+    metadata:
+      name: init-db-job
+    spec:
+      containers:
+      - name: init-db-job
+        image: elad2050/docker-demo:init-db
+        imagePullPolicy: Always
+      restartPolicy: OnFailure

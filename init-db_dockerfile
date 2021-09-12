@@ -1,0 +1,9 @@
+FROM python:3.7-slim-buster
+RUN mkdir /app
+WORKDIR /app
+COPY ./init-db_requirements.txt /app/init-db_requirements.txt
+RUN pip install -r init-db_requirements.txt
+COPY ./init_db.py/ /app/
+COPY ./add_to_book.txt/ /app/
+EXPOSE 3306
+CMD ["python", "/app/init_db.py"]
